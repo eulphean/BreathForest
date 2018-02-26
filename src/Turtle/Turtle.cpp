@@ -85,7 +85,7 @@ void Turtle::moveForward(){
 
 	//cout << "move forward from: " << x << ", " << y << " to " << newX << ", " << newY << endl;
 	ofEnableAlphaBlending();
-	ofSetColor(0, 0, 0, 120);
+	//ofSetColor(0, 0, 0, 120);
 	ofSetLineWidth(2);
 	ofLine(x, y, newX, newY);
 	x = newX;

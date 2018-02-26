@@ -6,6 +6,13 @@ void ofApp::setup(){
   
   // Default generation is 1.
   generation = 1;
+  
+  // Initialize turtle engine.
+  // (Forward, Left, Right).
+  // [TODO] Fix +, - switched in Turtle engine.
+  turtle = Turtle("F", "+", "-");
+  turtle.setLength(10);
+  turtle.setAngle(30);
 }
 
 //--------------------------------------------------------------
@@ -23,6 +30,13 @@ void ofApp::draw(){
   }
   
   ofDrawBitmapStringHighlight(pattern, 10, 10);
+  
+  ofSetColor(ofColor::white);
+  
+  // Draw the tree.
+  // (Result, start_x, start_y, start_angle)
+  // [TODO] Fix starting angle.
+  turtle.draw(treeRewrite[treeRewrite.size()-1], ofGetWidth()/2, ofGetHeight(), -90);
 }
 
 //--------------------------------------------------------------

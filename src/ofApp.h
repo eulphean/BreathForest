@@ -21,4 +21,7 @@ class ofApp : public ofBaseApp{
   
     // Result after running the tree production rule for # of iterations.
     vector<string> treeRewrite;
+  
+    // Define turtle engine. 
+    Turtle turtle;
 };
