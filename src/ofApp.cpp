@@ -18,15 +18,16 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
   // "F" is the axiom. generation is number of occurrences.
-  treeRewrite = ofxLSystemGrammar::buildSentences(tree, generation, "F");
+  //treeRewrite = ofxLSystemGrammar::buildSentences(tree, generation, "F");
+  treeNodeRewrite = ofxLSystemGrammar::buildSentences(treeNode, generation, "X");
 }
 
 void ofApp::draw(){
   // Draw the tree using Turtle graphics.
   
   string pattern;
-  for (int i = 0; i < treeRewrite.size(); i++) {
-    pattern += ofToString(i) + ": " + treeRewrite[i] + "\n";
+  for (int i = 0; i < treeNodeRewrite.size(); i++) {
+    pattern += ofToString(i) + ": " + treeNodeRewrite[i] + "\n";
   }
   
   ofDrawBitmapStringHighlight(pattern, 10, 10);
@@ -36,7 +37,7 @@ void ofApp::draw(){
   // Draw the tree.
   // (Result, start_x, start_y, start_angle)
   // [TODO] Fix starting angle.
-  turtle.draw(treeRewrite[treeRewrite.size()-1], ofGetWidth()/2, ofGetHeight(), -90);
+  turtle.draw(treeNodeRewrite[treeNodeRewrite.size()-1], ofGetWidth()/2, ofGetHeight(), -90);
 }
 
 //--------------------------------------------------------------
