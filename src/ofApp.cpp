@@ -11,14 +11,15 @@ void ofApp::setup(){
   // (Forward, Left, Right).
   // [TODO] Fix +, - switched in Turtle engine.
   turtle = Turtle("F", "+", "-");
-  turtle.setLength(10);
+  turtle.setLength(5);
   turtle.setAngle(30);
+  resultStochastic = ofxLSystemGrammar::buildSentences(stochastic, generation, "F");
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
   // "F" is the axiom. generation is number of occurrences.
-  //treeRewrite = ofxLSystemGrammar::buildSentences(tree, generation, "F");
+  treeRewrite = ofxLSystemGrammar::buildSentences(tree, generation, "F");
   treeNodeRewrite = ofxLSystemGrammar::buildSentences(treeNode, generation, "X");
 }
 
@@ -26,18 +27,15 @@ void ofApp::draw(){
   // Draw the tree using Turtle graphics.
   
   string pattern;
-  for (int i = 0; i < treeNodeRewrite.size(); i++) {
-    pattern += ofToString(i) + ": " + treeNodeRewrite[i] + "\n";
+  for (int i = 0; i < resultStochastic.size(); i++) {
+    pattern += ofToString(i) + ": " + resultStochastic[i] + "\n";
   }
   
-  ofDrawBitmapStringHighlight(pattern, 10, 10);
+  cout << pattern << endl;
   
   ofSetColor(ofColor::white);
   
-  // Draw the tree.
-  // (Result, start_x, start_y, start_angle)
-  // [TODO] Fix starting angle.
-  turtle.draw(treeNodeRewrite[treeNodeRewrite.size()-1], ofGetWidth()/2, ofGetHeight(), -90);
+  turtle.draw(resultStochastic[resultStochastic.size()-1], ofGetWidth(), ofGetHeight(), -145);
 }
 
 //--------------------------------------------------------------
@@ -45,11 +43,15 @@ void ofApp::keyPressed(int key){
   switch (key) {
     case OF_KEY_UP: {
       generation += 1;
+      resultStochastic = ofxLSystemGrammar::buildSentences(stochastic, generation, "F");
+      //turtle.setLength(ofRandom(3, 5));
+      //turtle.setAngle(ofRandom(45, 90));
       break;
     }
     
     case OF_KEY_DOWN: {
       generation -= 1;
+      resultStochastic = ofxLSystemGrammar::buildSentences(stochastic, generation, "F");
       break;
     }
     

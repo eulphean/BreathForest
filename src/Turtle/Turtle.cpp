@@ -1,9 +1,6 @@
 /*
  *  Turtle.cpp
- *  Lsystem
- *
- *  Created by Daan on 02-04-11.
- *  Copyright 2011 Daan van Hasselt. All rights reserved.
+ *  Lsystem language generation.
  *
  */
 

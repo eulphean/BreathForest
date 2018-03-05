@@ -19,11 +19,17 @@ class ofApp : public ofBaseApp{
     // Tree production rule.
     vector<string> tree{"F->F[+F]F[-F][F]"};
     vector<string> treeNode{"X->F[+X][-X]FX", "F->FF"};
+    vector<string> stochastic {
+      "0.33 -> F -> F[+F]F[-F]F",
+      "0.33 -> F -> F[+F]F",
+      "0.34 -> F -> F[-F]F",
+    };
   
     // Result after running the tree production rule for # of iterations.
     vector<string> treeRewrite;
     vector<string> treeNodeRewrite;
-  
+    vector<string> resultStochastic;
+    
     // Define turtle engine. 
     Turtle turtle;
 };
